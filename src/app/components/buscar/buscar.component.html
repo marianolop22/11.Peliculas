@@ -1,0 +1,31 @@
+<div class="container main-container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label>Buscar</label>
+        <input class="form-control"
+               type="text" name="buscar"
+               [(ngModel)]="buscar"
+               (keyup.enter)="buscarPelicula()"
+               placeholder="Buscar una pelicula">
+
+      </div>
+
+    </div>
+  </div>
+
+<div class="row">
+  <div class="card-columns">
+    <div class="card" *ngFor="let item of _peliculas.peliculas">
+      <img [src]="item| peliculaImagen" class="card-img-top" alt="">
+      <div class="card-body">
+        <h5 class="card-title">{{item.original_title}}</h5>
+        <p class="card-text text-justify">{{item.overview|slice:0:200}}...</p>
+        <button [routerLink]="['/pelicula', item.id, 'buscar', buscar]" type="button" class="btn btn-outline-primary form-control" name="button">Leer más</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
